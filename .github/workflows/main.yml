@@ -4,7 +4,16 @@ on:
     branches: [master]
 
 jobs:
-  run-jest:
+  E2E-Test-Cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Installs packages'
+        run: npm install
+      - uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev:host
+  Unit-Test-vitest:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v4

@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test:unit": "vitest",
+    "test:e2e": "cypress run --browser chrome",
+    "test:e2e:dev": "start-server-and-test dev:host http://localhost:5173/ cy:open",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -17,7 +21,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/test-utils": "^2.4.6",
+    "cypress": "^13.11.0",
     "jsdom": "^24.1.0",
+    "start-server-and-test": "^2.0.4",
     "vite": "^5.2.0",
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.6"
