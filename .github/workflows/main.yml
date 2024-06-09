@@ -4,13 +4,22 @@ on:
     branches: [master]
 
 jobs:
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Install packages'
+        run: npm install
+      - name: Run linter
+        run: npm run lint
   E2E-Test-Cypress:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: 'Install packages'
         run: npm install
-      - uses: cypress-io/github-action@v6
+      - name: Run E2E tests
+        uses: cypress-io/github-action@v6
         with:
           start: npm run dev:host
   Unit-Test-vitest:

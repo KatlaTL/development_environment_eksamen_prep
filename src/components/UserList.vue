@@ -29,7 +29,7 @@ const handleEdit = (index) => {
 <template>
     <h1>User List</h1>
     <ul>
-        <li v-for="(user, index) in userList" :data-user="user.name">
+        <li v-for="(user, index) in userList" :data-user="user.name" :key="index">
             {{ user.name }}
             <button @click="() => handleDelete(index)" class="delete">Delete</button>
             <button @click="() => handleEdit(index)" class="edit">Edit</button>
